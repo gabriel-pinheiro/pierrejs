@@ -1,13 +1,13 @@
 import { allParser } from "./parsers/all";
 import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser, nonSpaceParser, spaceParser } from "./parsers/alphanum";
-import { firstParser } from "./parsers/first";
+import { eitherParser } from "./parsers/either";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
 
 export default {
     string: stringParser,
     all: allParser,
-    first: firstParser,
+    either: eitherParser,
     until: untilParser,
 
     letters: lettersParser,
