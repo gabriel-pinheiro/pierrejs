@@ -36,6 +36,6 @@ describe('manyUntilEnd', () => {
 
     it('should not leave unconsumed chars', () => {
         const parser = Pr.manyUntilEnd(Pr.string('a'));
-        expect(() => parser.parse('aab')).to.throw('Expected "a", got "b"');
+        expect(() => parser.parse('aab')).to.throw(/Expected "a", got "b"/);
     });
 });

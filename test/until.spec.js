@@ -9,17 +9,17 @@ const { expect } = Code;
 describe('until', () => {
     it('should fail on EOF', () => {
         const parser = Pr.until(Pr.string('foo'));
-        expect(() => parser.parse('')).to.throw('Unexpected end of input');
+        expect(() => parser.parse('')).to.throw(/Unexpected end of input/);
     });
 
     it('should fail on EOF after consuming', () => {
         const parser = Pr.until(Pr.string('foo'));
-        expect(() => parser.parse('abc')).to.throw('Unexpected end of input');
+        expect(() => parser.parse('abc')).to.throw(/Unexpected end of input/);
     });
 
     it('should fail if nothing until', () => {
         const parser = Pr.until(Pr.string('foo'));
-        expect(() => parser.parse('foo')).to.throw('Unexpected "foo"');
+        expect(() => parser.parse('foo')).to.throw(/Unexpected "foo"/);
     });
 
     it('should consume until', () => {

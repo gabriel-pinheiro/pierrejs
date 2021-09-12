@@ -9,12 +9,12 @@ const { expect } = Code;
 describe('except', () => {
     it('should fail on EOF', () => {
         const parser = Pr.except(Pr.string('foo'));
-        expect(() => parser.parse('')).to.throw('Unexpected end of input');
+        expect(() => parser.parse('')).to.throw(/Unexpected end of input/);
     });
 
     it('should fail if nothing except', () => {
         const parser = Pr.except(Pr.string('foo'));
-        expect(() => parser.parse('foo')).to.throw('Unexpected "foo"');
+        expect(() => parser.parse('foo')).to.throw(/Unexpected "foo"/);
     });
 
     it('should consume char', () => {

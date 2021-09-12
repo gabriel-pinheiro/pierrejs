@@ -34,6 +34,6 @@ describe('either', () => {
         );
 
         expect(() => parser.parse('bx'))
-            .to.throw('Expected "a", got "x"');
+            .to.throw(/Expected "a", got "x"/);
     });
 });
