@@ -32,4 +32,30 @@ describe('all', () => {
         const parser = Pr.all(Pr.string('foo'), Pr.end());
         expect(parser.parse('foo')).to.equal(['foo', null]); 
     });
+
+    it('should accept factories', () => {
+        const parser = Pr.all(Pr.string('foo'), () => Pr.string('bar'));
+        const result = parser.parse('foobar');
+
+        expect(result).to.equal(['foo', 'bar']);
+    });
+
+    it('should pass previous values to factories (accept)', () => {
+        const parser = Pr.all(Pr.letters(), Pr.string(','), ([letters, _]) => Pr.string(letters));
+        const result = parser.parse('foo,foo');
+
+        expect(result).to.equal(['foo', ',', 'foo']);
+    });
+
+    it('should pass previous values to factories (reject)', () => {
+        const parser = Pr.all(Pr.letters(), Pr.string(','), ([letters, _]) => Pr.string(letters));
+        expect(() => parser.parse('foo,bar')).to.throw(/expected.*"foo".*got.*"bar"/i);
+    });
+
+    it('should accept factory as first parser', () => {
+        const parser = Pr.all(() => Pr.string('foo'), Pr.string('bar'));
+        const result = parser.parse('foobar');
+
+        expect(result).to.equal(['foo', 'bar']);
+    });
 });
