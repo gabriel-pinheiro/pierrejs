@@ -34,4 +34,9 @@ describe('until', () => {
 
         expect(parser.parse('{{abc}}')).to.equal(['{{', 'abc', '}}']);
     });
+
+    it('should accept until end', () => {
+        const parser = Pr.until(Pr.end());
+        expect(parser.parse('abc')).to.equal('abc');
+    });
 });

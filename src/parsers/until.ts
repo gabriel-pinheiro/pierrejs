@@ -12,14 +12,14 @@ export function untilParser(parser: Parser<any>): Parser<string> {
             const { code, index } = nextState;
             const current = code.slice(index);
 
-            if(current.length === 0) {
-                return Result.fail(state, 'Unexpected end of input');
-            }
-        
             const result = parser.applyTo(nextState);
             if(!result.error) {
                 if(value.length) return Result.ok(nextState, value);
                 else             return Result.fail(nextState, 'Unexpected ' + parser.name);
+            }
+
+            if(current.length === 0) {
+                return Result.fail(state, 'Unexpected end of input');
             }
 
             value += current.charAt(0);
