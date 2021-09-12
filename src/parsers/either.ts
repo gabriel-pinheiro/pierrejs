@@ -6,7 +6,7 @@ export function eitherParser<T>(...parsers: Parser<T>[]): Parser<T> {
     return new Parser(name, state => {
         for(const parser of parsers) {
             const result = parser.applyTo(state);
-            if(result.value) {
+            if(!result.error) {
                 return result;
             }
         }

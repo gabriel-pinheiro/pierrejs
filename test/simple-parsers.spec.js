@@ -50,6 +50,11 @@ describe('all', () => {
         expect(() => parser.parse('foofoo'))
             .to.throw(/expected.*"bar".*got.*"foo"/i);
     });
+
+    it('should not reject on falsy responses', () => {
+        const parser = Pr.all(Pr.string('foo'), Pr.end());
+        expect(parser.parse('foo')).to.equal(['foo', null]); 
+    });
 });
 
 describe('either', () => {
@@ -72,6 +77,11 @@ describe('either', () => {
         
         expect(() => parser.parse('baz'))
             .to.throw(/expected one of .*"foo", "bar".*got.*"baz"/i);
+    });
+
+    it('should accept falsy responses', () => {
+        const parser = Pr.either(Pr.string('foo'), Pr.end());
+        expect(parser.parse('')).to.equal(null);
     });
 });
 

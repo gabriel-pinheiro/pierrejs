@@ -17,7 +17,7 @@ export function untilParser(parser: Parser<any>): Parser<string> {
             }
         
             const result = parser.applyTo(nextState);
-            if(result.value) {
+            if(!result.error) {
                 if(value.length) return Result.ok(nextState, value);
                 else             return Result.fail(nextState, 'Unexpected ' + parser.name);
             }
