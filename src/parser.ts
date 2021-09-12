@@ -11,4 +11,19 @@ export class Parser<T> {
         const initialState = State.of(code)
         return this.applyTo(initialState).resolve();
     }
+
+    public map<K>(fn: (value: T) => K): Parser<K> {
+        return new Parser(this.name, state => {
+            const result = this.applyTo(state);
+            if(result.error) {
+                return result as Result<any>;
+            }
+
+            return Result.ok(result.state, fn(result.value));
+        });
+    }
+
+    public withName(name: string): Parser<T> {
+        return new Parser(name, this.applyTo);
+    }
 }
