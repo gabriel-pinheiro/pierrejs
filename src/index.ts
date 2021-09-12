@@ -2,6 +2,7 @@ import { allParser } from "./parsers/all";
 import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser, nonSpaceParser, spaceParser } from "./parsers/alphanum";
 import { eitherParser } from "./parsers/either";
 import { endParser } from "./parsers/end";
+import { exceptParser } from "./parsers/except";
 import { manyParser } from "./parsers/many";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
@@ -13,6 +14,7 @@ export default {
     until: untilParser,
     many: manyParser,
     end: endParser,
+    except: exceptParser,
 
     letters: lettersParser,
     digits: digitsParser,
