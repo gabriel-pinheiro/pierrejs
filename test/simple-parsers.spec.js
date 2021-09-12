@@ -51,3 +51,26 @@ describe('all', () => {
             .to.throw(/expected.*"bar".*got.*"foo"/i);
     });
 });
+
+describe('first', () => {
+    it('should accept when first accepts', () => {
+        const parser = Pr.first(Pr.string('foo'), Pr.string('bar'));
+        const result = parser.parse('foo :)');
+
+        expect(result).to.equal('foo');
+    });
+
+    it('should accept when others accept', () => {
+        const parser = Pr.first(Pr.string('foo'), Pr.string('bar'));
+        const result = parser.parse('bar :)');
+
+        expect(result).to.equal('bar');
+    });
+
+    it('should reject when all reject', () => {
+        const parser = Pr.first(Pr.string('foo'), Pr.string('bar'));
+        
+        expect(() => parser.parse('baz'))
+            .to.throw(/expected one of .*"foo", "bar".*got.*"baz"/i);
+    });
+});
