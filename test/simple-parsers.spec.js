@@ -28,3 +28,26 @@ describe('string', () => {
             .to.throw(/expected.*"foo".*got.*"fo<EOF>"/i);
     });
 });
+
+describe('all', () => {
+    it('should accept when both accept', () => {
+        const parser = Pr.all(Pr.string('foo'), Pr.string('bar'));
+        const result = parser.parse('foobarbaz');
+
+        expect(result).to.equal(['foo', 'bar']);
+    });
+
+    it('should reject when first rejects', () => {
+        const parser = Pr.all(Pr.string('foo'), Pr.string('bar'));
+        
+        expect(() => parser.parse('faobar'))
+            .to.throw(/expected.*"foo".*got.*"fao.*"/i);
+    });
+
+    it('should reject when others reject', () => {
+        const parser = Pr.all(Pr.string('foo'), Pr.string('bar'));
+        
+        expect(() => parser.parse('foofoo'))
+            .to.throw(/expected.*"bar".*got.*"foo"/i);
+    });
+});

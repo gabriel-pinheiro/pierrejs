@@ -3,7 +3,8 @@
       "module": "commonjs",
       "removeComments": true,
       "target": "es2019",
-      "sourceMap": true,
+      "sourceMap": false,
+      "declaration": true,
       "outDir": "./dist",
       "baseUrl": "./",
       "incremental": true

@@ -1,7 +1,7 @@
 import { Parser } from "../parser";
 import { Result } from "../result";
 
-export function stringParser(str: string) {
+export function stringParser(str: string): Parser<string> {
     return new Parser(`"${str}"`, state => {
         const { code, index } = state;
         const current = code.slice(index);
@@ -11,7 +11,7 @@ export function stringParser(str: string) {
         }
 
         if(!current.startsWith(str)) {
-            return Result.fail(state, `Expected "${str}", got "${current}"`);
+            return Result.fail(state, `Expected "${str}", got "${current.slice(0, 16)}"`);
         }
 
         const nextState = state.update(index + str.length);

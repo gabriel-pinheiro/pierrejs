@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "A zero-dependency parser combinator with great parsing error messages",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "tsc",
