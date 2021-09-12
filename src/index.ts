@@ -4,6 +4,7 @@ import { eitherParser } from "./parsers/either";
 import { endParser } from "./parsers/end";
 import { exceptParser } from "./parsers/except";
 import { manyParser } from "./parsers/many";
+import { oneOfParser } from "./parsers/one-of";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
 
@@ -11,6 +12,7 @@ export default {
     string: stringParser,
     all: allParser,
     either: eitherParser,
+    oneOf: oneOfParser,
     until: untilParser,
     many: manyParser,
     end: endParser,
