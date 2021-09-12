@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
       "module": "commonjs",
-      "removeComments": true,
+      "removeComments": false,
       "target": "es2019",
       "sourceMap": false,
       "declaration": true,
