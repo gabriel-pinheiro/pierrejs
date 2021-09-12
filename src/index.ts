@@ -7,6 +7,7 @@ import { manyParser } from "./parsers/many";
 import { manyUntilEndParser } from "./parsers/many-until-end";
 import { oneOfParser } from "./parsers/one-of";
 import { oneOrManyParser } from "./parsers/one-or-many";
+import { optionalParser } from "./parsers/optional";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
 
@@ -21,6 +22,7 @@ export default {
     oneOrMany: oneOrManyParser,
     end: endParser,
     except: exceptParser,
+    optional: optionalParser,
 
     letters: lettersParser,
     digits: digitsParser,
