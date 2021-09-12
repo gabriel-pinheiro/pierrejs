@@ -15,6 +15,10 @@ export function manyParser<T>(parser: Parser<T>): Parser<T[]> {
             }
 
             value.push(result.value);
+            if(result.state.index === nextState.index) {
+                return Result.ok(nextState, value);
+            }
+
             nextState = result.state;
         }
     });
