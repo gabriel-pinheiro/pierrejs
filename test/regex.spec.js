@@ -60,4 +60,23 @@ describe('other regex parsers', () => {
 
         expect(result).to.equal('1a-2b_');
     });
+
+    it('spaces should consume spaces', () => {
+        const parser = Pr.all(Pr.spaces(), Pr.letters());
+        const result = parser.parse('  abc');
+
+        expect(result[1]).to.equal('abc');
+    });
+
+    it('non-spaces should consume non-spaces', () => {
+        const parser = Pr.nonSpaces();
+        const result = parser.parse('abc  ');
+
+        expect(result).to.equal('abc');
+    });
+
+    it('non-spaces should reject spaces', () => {
+        const parser = Pr.nonSpaces();
+        expect(() => parser.parse('  a')).to.throw(/expected non-spaces/i);
+    });
 });

@@ -1,5 +1,5 @@
 import { allParser } from "./parsers/all";
-import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser } from "./parsers/alphanum";
+import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser, nonSpaceParser, spaceParser } from "./parsers/alphanum";
 import { firstParser } from "./parsers/first";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
@@ -14,4 +14,6 @@ export default {
     digits: digitsParser,
     alphanum: alphanumParser,
     alphanumDashUnderscore: alphanumDashUnderscoreParser,
+    spaces: spaceParser,
+    nonSpaces: nonSpaceParser,
 };
