@@ -9,6 +9,7 @@ import { manyUntilEndParser } from "./parsers/many-until-end";
 import { oneOfParser } from "./parsers/one-of";
 import { oneOrManyParser } from "./parsers/one-or-many";
 import { optionalParser } from "./parsers/optional";
+import { regexParser } from "./parsers/regex";
 import { separatedByParser } from "./parsers/separated-by";
 import { stringParser } from "./parsers/string";
 import { untilParser } from "./parsers/until";
@@ -28,6 +29,7 @@ export default {
     separatedBy: separatedByParser,
     lazy: lazyParser,
 
+    regex: regexParser,
     letters: lettersParser,
     digits: digitsParser,
     alphanum: alphanumParser,
