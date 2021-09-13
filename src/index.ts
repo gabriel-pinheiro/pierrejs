@@ -5,6 +5,7 @@ import { endParser } from "./parsers/end";
 import { exceptParser } from "./parsers/except";
 import { expectedParser } from "./parsers/expected";
 import { lazyParser } from "./parsers/lazy";
+import { lookAheadParser } from "./parsers/look-ahead";
 import { manyParser, manyUntilEndParser, oneOrManyParser } from "./parsers/many";
 import { optionalParser } from "./parsers/optional";
 import { regexParser } from "./parsers/regex";
@@ -27,6 +28,7 @@ export default {
     separatedBy: separatedByParser,
     lazy: lazyParser,
     expected: expectedParser,
+    lookAhead: lookAheadParser,
 
     regex: regexParser,
     letters: lettersParser,
