@@ -1,13 +1,10 @@
 import { allParser } from "./parsers/all";
 import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser, nonSpaceParser, spaceParser } from "./parsers/alphanum";
-import { eitherParser } from "./parsers/either";
+import { eitherParser, oneOfParser } from "./parsers/either";
 import { endParser } from "./parsers/end";
 import { exceptParser } from "./parsers/except";
 import { lazyParser } from "./parsers/lazy";
-import { manyParser } from "./parsers/many";
-import { manyUntilEndParser } from "./parsers/many-until-end";
-import { oneOfParser } from "./parsers/one-of";
-import { oneOrManyParser } from "./parsers/one-or-many";
+import { manyParser, manyUntilEndParser, oneOrManyParser } from "./parsers/many";
 import { optionalParser } from "./parsers/optional";
 import { regexParser } from "./parsers/regex";
 import { separatedByParser } from "./parsers/separated-by";
@@ -38,6 +35,8 @@ export default {
     nonSpaces: nonSpaceParser,
 };
 
+/* $lab:coverage:off$ */
 export { Parser } from "./parser";
 export { Result } from "./result";
 export { State } from "./state";
+/* $lab:coverage:on$ */
