@@ -35,3 +35,7 @@ export default {
     spaces: spaceParser,
     nonSpaces: nonSpaceParser,
 };
+
+export { Parser } from "./parser";
+export { Result } from "./result";
+export { State } from "./state";
