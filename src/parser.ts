@@ -23,6 +23,17 @@ export class Parser<T> {
         });
     }
 
+    public pipe<K>(fn: (value: T) => Parser<K>): Parser<K> {
+        return new Parser(this.name, state => {
+            const result = this.applyTo(state);
+            if(result.error) {
+                return result as Result<any>;
+            }
+
+            return fn(result.value).applyTo(result.state);
+        });
+    }
+
     public withName(name: string): Parser<T> {
         return new Parser(name, this.applyTo);
     }
