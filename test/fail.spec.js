@@ -8,8 +8,8 @@ const { expect } = Code;
 
 describe('excepted', () => {
     it('should always fail', () => {
-        const parser = Pr.expected('something');
-        expect(() => parser.parse('foo')).to.throw(/expected.*something.*got.*"foo"/i);
-        expect(() => parser.parse('')).to.throw(/expected.*something.*got.*EOF/i);
+        const parser = Pr.fail('something');
+        expect(() => parser.parse('foo')).to.throw(/something/);
+        expect(() => parser.parse('')).to.throw(/something/);
     });
 });
