@@ -3,6 +3,7 @@ import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersPars
 import { eitherParser, oneOfParser } from "./parsers/either";
 import { endParser } from "./parsers/end";
 import { exceptParser } from "./parsers/except";
+import { expectedParser } from "./parsers/expected";
 import { lazyParser } from "./parsers/lazy";
 import { manyParser, manyUntilEndParser, oneOrManyParser } from "./parsers/many";
 import { optionalParser } from "./parsers/optional";
@@ -25,6 +26,7 @@ export default {
     optional: optionalParser,
     separatedBy: separatedByParser,
     lazy: lazyParser,
+    expected: expectedParser,
 
     regex: regexParser,
     letters: lettersParser,
