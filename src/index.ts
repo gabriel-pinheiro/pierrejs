@@ -1,5 +1,6 @@
 import { allParser } from "./parsers/all";
 import { alphanumDashUnderscoreParser, alphanumParser, digitsParser, lettersParser, nonSpaceParser, spaceParser } from "./parsers/alphanum";
+import { contextParser } from "./parsers/context";
 import { eitherParser, oneOfParser } from "./parsers/either";
 import { endParser } from "./parsers/end";
 import { exceptParser } from "./parsers/except";
@@ -29,6 +30,8 @@ export default {
     lazy: lazyParser,
     fail: failParser,
     lookAhead: lookAheadParser,
+
+    context: contextParser,
 
     regex: regexParser,
     letters: lettersParser,
