@@ -16,21 +16,21 @@ describe('all', () => {
 
     it('should reject when first rejects', () => {
         const parser = Pr.all(Pr.string('foo'), Pr.string('bar'));
-        
+
         expect(() => parser.parse('faobar'))
             .to.throw(/expected.*"foo".*got.*"fao.*"/i);
     });
 
     it('should reject when others reject', () => {
         const parser = Pr.all(Pr.string('foo'), Pr.string('bar'));
-        
+
         expect(() => parser.parse('foofoo'))
             .to.throw(/expected.*"bar".*got.*"foo"/i);
     });
 
     it('should not reject on falsy responses', () => {
-        const parser = Pr.all(Pr.string('foo'), Pr.end());
-        expect(parser.parse('foo')).to.equal(['foo', null]); 
+        const parser = Pr.all(Pr.string('foo'), Pr.optional(Pr.string('bar')));
+        expect(parser.parse('foo')).to.equal(['foo', null]);
     });
 
     it('should accept factories', () => {

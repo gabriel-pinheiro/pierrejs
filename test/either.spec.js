@@ -22,7 +22,7 @@ describe('either', () => {
     });
 
     it('should accept falsy responses', () => {
-        const parser = Pr.either(Pr.string('foo'), Pr.end());
+        const parser = Pr.either(Pr.string('foo'), Pr.optional(Pr.string('bar')));
         expect(parser.parse('')).to.equal(null);
     });
 

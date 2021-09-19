@@ -11,12 +11,12 @@ describe('end', () => {
         const parser = Pr.all(Pr.string('foo'), Pr.end());
         const result = parser.parse('foo');
 
-        expect(result).to.equal(['foo', null]);
+        expect(result).to.equal(['foo', true]);
     });
 
     it('should reject when not at end', () => {
         const parser = Pr.all(Pr.string('foo'), Pr.end());
-        
+
         expect(() => parser.parse('foobar'))
             .to.throw(/expected.*end.*got.*"bar"/i);
     });

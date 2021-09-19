@@ -22,13 +22,13 @@ describe('oneOf', () => {
     });
 
     it('should accept falsy responses', () => {
-        const parser = Pr.oneOf(Pr.string('foo'), Pr.end());
+        const parser = Pr.oneOf(Pr.string('foo'), Pr.optional(Pr.string('bar')));
         expect(parser.parse('')).to.equal(null);
     });
 
     it('should reject when all reject', () => {
         const parser = Pr.oneOf(Pr.string('foo'), Pr.string('bar'));
-        
+
         expect(() => parser.parse('baz'))
             .to.throw(/expected one of .*"foo", "bar".*got.*"baz"/i);
     });
